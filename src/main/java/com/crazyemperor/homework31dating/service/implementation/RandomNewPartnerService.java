@@ -1,6 +1,5 @@
 package com.crazyemperor.homework31dating.service.implementation;
 
-import com.crazyemperor.homework31dating.entity.Sex;
 import com.crazyemperor.homework31dating.entity.User;
 import com.crazyemperor.homework31dating.repository.UserRepository;
 import com.crazyemperor.homework31dating.service.NewPartnerService;
@@ -15,7 +14,7 @@ import java.util.Random;
 @Primary
 public class RandomNewPartnerService implements NewPartnerService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Autowired
     public RandomNewPartnerService(UserRepository userRepository) {
@@ -35,12 +34,10 @@ public class RandomNewPartnerService implements NewPartnerService {
 
     @Override
     public boolean isSuitable() {
-        User user = new User();
-        Sex sex;
 
-        user = getNewMatch();
+        getNewMatch();
 
-        switch (user.getSex()) {
+        switch (getNewMatch().getSex()) {
             case MALE, FEMALE -> {
                 return true;
             }

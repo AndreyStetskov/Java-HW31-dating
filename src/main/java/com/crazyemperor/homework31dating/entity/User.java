@@ -1,10 +1,10 @@
 package com.crazyemperor.homework31dating.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
+@AllArgsConstructor
 public class User {
 
     public String name;

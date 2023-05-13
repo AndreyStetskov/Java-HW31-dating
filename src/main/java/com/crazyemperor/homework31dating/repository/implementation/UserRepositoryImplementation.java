@@ -14,8 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-@Component
 @Primary
+@Component
 public class UserRepositoryImplementation implements UserRepository {
 
     private List<User> userList;
@@ -25,8 +25,7 @@ public class UserRepositoryImplementation implements UserRepository {
 
         userList = new ArrayList<>();
 
-        try {
-            BufferedReader bufferedReader = Files.newBufferedReader(Path.of("resources/users/userDating.txt"));
+        try(BufferedReader bufferedReader = Files.newBufferedReader(Path.of("src/main/static/users/userDating"))) {
             Stream <String> userDating = bufferedReader.lines();
 
             userDating.map(user -> user.replaceAll("\\s+", " "))
